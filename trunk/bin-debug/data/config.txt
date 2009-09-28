@@ -1,0 +1,1 @@
+model=data/handwriting-basic.model.zip
