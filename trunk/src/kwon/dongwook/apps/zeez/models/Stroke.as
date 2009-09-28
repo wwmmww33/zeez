@@ -4,6 +4,7 @@ package kwon.dongwook.apps.zeez.models {
 	
 	import flash.geom.Point;
 	
+	
 	public class Stroke {
 		
 		public var index:uint = 0;
@@ -12,6 +13,14 @@ package kwon.dongwook.apps.zeez.models {
 		public function Stroke(index:uint = 0) {
 			this.index = index;
 			dots = new Vector.<Point>();
+		}
+
+		public function clone():Stroke {
+			var cloned:Stroke = new Stroke(this.index);
+			for each(var dot:Point in dots) {
+				cloned.dots.push(new Point(dot.x, dot.y));
+			}
+			return cloned;
 		}
 		
 		public function toString():String {

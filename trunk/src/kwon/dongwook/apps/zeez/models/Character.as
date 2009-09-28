@@ -2,9 +2,6 @@ package kwon.dongwook.apps.zeez.models {
 	
 	import __AS3__.vec.Vector;
 	
-	import flash.geom.Point;
-	import kwon.dongwook.apps.zeez.models.Stroke;
-	
 	public class Character {
 		
 		private var _strokes:Vector.<Stroke>;
@@ -16,7 +13,7 @@ package kwon.dongwook.apps.zeez.models {
 		public function Character() {
 			_strokes = new Vector.<Stroke>();
 		}
-				
+		
 		public function addStroke(stroke:Stroke):void {
 			_strokes.push(stroke);
 		}
@@ -25,5 +22,25 @@ package kwon.dongwook.apps.zeez.models {
 			_strokes = _strokes.concat(strokes);
 		}
 
+		public function applyFreemanChain():void {
+			for each(var element:Stroke in _strokes) {
+				element.dots = FreemanChain.getChain(element.dots);
+			}
+		}
+		
+		public function rescaleArea():void {
+			_strokes = Rescaler.rescale(this);
+		}
+		
+		public function clone():Character {
+			var cloned:Character = new Character();
+			cloned.width = width;
+			cloned.height = height;
+			for each(var stroke:Stroke in _strokes) {
+				cloned.addStroke(stroke.clone());
+			}
+			return cloned;
+		}
+		
 	}
 }
