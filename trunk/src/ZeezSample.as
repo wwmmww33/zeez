@@ -1,4 +1,4 @@
-package kwon.dongwook.apps.zeez.samples{
+package {
 	
 	import __AS3__.vec.Vector;
 	
@@ -13,9 +13,11 @@ package kwon.dongwook.apps.zeez.samples{
 	import kwon.dongwook.apps.zeez.models.Character;
 	import kwon.dongwook.apps.zeez.models.Result;
 	import kwon.dongwook.apps.zeez.models.Stroke;
+	import kwon.dongwook.apps.zeez.samples.*;
 	import kwon.dongwook.events.DynamicEvent;
 	import kwon.dongwook.log.TimeRecorder;
-
+	
+	[SWF(width="600", height="400", frameRate="30", backgroundColor="#FFFFFF")]
 	public class ZeezSample extends Sprite {
 		
 		private var _zeez:Zeez;
@@ -99,13 +101,11 @@ package kwon.dongwook.apps.zeez.samples{
 			TimeRecorder.end("End finding");
 			displayResults(results);
 		}
-		
+	
 		private function displayResults(results:Vector.<Result>):void {
 			_result.text = "------- results -------------\n";
-			trace(" ---------- results ---------------------");
 			for (var i:uint = 0; i < results.length; i++) {
 				var result:String = " " + (i+1) + "'s :" + Result(results[i]).character + ", score:" + results[i].score 
-				trace(result);
 				_result.appendText(result + "\n");
 			}
 		}

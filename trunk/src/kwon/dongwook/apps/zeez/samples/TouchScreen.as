@@ -39,6 +39,17 @@ package kwon.dongwook.apps.zeez.samples {
 			addChild(_canvas);
 			clear();
 		}
+		
+		public function drawStrokes(strokes:Vector.<Stroke>):void {
+			var color:Number = 0x99CC00;
+			_canvas.graphics.lineStyle(1, color);
+			for each(var stroke:Stroke in strokes) {
+				_canvas.graphics.moveTo(stroke.dots[0].x, stroke.dots[0].y);
+				for each(var dot:Point in stroke.dots) {
+					_canvas.graphics.lineTo(dot.x, dot.y);
+				}
+			}
+		}
 	
 		public function clear():void {
 			_strokeIndex = 0;
@@ -60,7 +71,7 @@ package kwon.dongwook.apps.zeez.samples {
 		}
 		
 		private function moveMouseEventHandler(e:MouseEvent):void {
-			if (_isDrawing && (_reducer % 5) == 0) {
+			if (_isDrawing && (_reducer % 3) == 0) {
 				_canvas.graphics.lineTo(e.localX, e.localY);
 				_strokes[_strokeIndex].dots.push(new Point(e.localX, e.localY));
 			}
