@@ -19,20 +19,21 @@ package test {
 		
 		public function testFreeman():void {
 			_chain = new FreemanChain();
-//			checkDirection(new Point(0, 0), new Point(0, 1), 0);
-//			checkDirection(new Point(0, 0), new Point(1, 0), 2);
-//			checkDirection(new Point(5, 3), new Point(5, 4), 0);
-//			checkDirection(new Point(322, 455), new Point(323, 455), 2);
-//			checkDirection(new Point(59, 32), new Point(59, 340), 0);
-//			checkDirection(new Point(569, 237), new Point(1071, 237), 2);
-//			checkDirection(new Point(0, 0), new Point(1, 1), 1);
-//			checkDirection(new Point(0, 0), new Point(1, -1), 3);
-//			checkDirection(new Point(0, 0), new Point(0, -1), 4);
-//			checkDirection(new Point(0, 0), new Point(-1, -1), 5);
-//			checkDirection(new Point(0, 0), new Point(-1, 0), 6);
-//			checkDirection(new Point(0, 0), new Point(-1, 1), 7);
-//			
-//			checkDirection(new Point(0, 0), new Point(30, 1), 2);
+			checkDirection(new Point(0, 0), new Point(0, 1), 0);
+			checkDirection(new Point(0, 0), new Point(1, 0), 2);
+			checkDirection(new Point(5, 3), new Point(5, 4), 0);
+			checkDirection(new Point(322, 455), new Point(323, 455), 2);
+			checkDirection(new Point(59, 32), new Point(59, 340), 0);
+			checkDirection(new Point(569, 237), new Point(1071, 237), 2);
+			checkDirection(new Point(0, 0), new Point(1, 1), 1);
+			checkDirection(new Point(0, 0), new Point(1, -1), 3);
+			checkDirection(new Point(0, 0), new Point(0, -1), 4);
+			checkDirection(new Point(0, 0), new Point(-1, -1), 5);
+			checkDirection(new Point(0, 0), new Point(-1, 0), 6);
+			checkDirection(new Point(0, 0), new Point(-1, 1), 7);
+			
+			checkDirection(new Point(0, 0), new Point(0.096, 2), 0);
+			checkDirection(new Point(0, 0), new Point(2, 0.96), 1);
 			
 			var points:Vector.<Point> = new Vector.<Point>();
 			points.push(new Point(39, 22));
@@ -64,10 +65,8 @@ package test {
 			points.push(new Point(53, 38));
 			
 			
-			trace("points:" + points);
-			var freeman:Vector.<Point> = _chain.getChain(points);
-			trace("freeman:" + freeman);
-			assertEquals("length should be 3:", 5, freeman.length);
+			var freeman:Vector.<Point> = FreemanChain.getChain(points);
+			assertEquals("length should be 3:", 8, freeman.length);
 		}
 		
 		private function checkDirection(dot1:Point, dot2:Point, expectation:Number):void {

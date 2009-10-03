@@ -4,8 +4,8 @@ package kwon.dongwook.apps.zeez.models {
 	
 	public class FreemanChain {
 		
-		private const DIRECTION:Array = [0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 0];
-		private const PIECE:Number = Math.PI/6;
+		private const DIRECTION:Array = [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 0];
+		private const PIECE:Number = Math.PI/8;
 		private static var _instance:FreemanChain;
 		
 		public static function getChain(points:Vector.<Point>):Vector.<Point> {
@@ -34,10 +34,10 @@ package kwon.dongwook.apps.zeez.models {
 			return shortened;
 		}
 		
-		private function getFreemanDirection(dot1:Point, dot2:Point):int {
+		public function getFreemanDirection(dot1:Point, dot2:Point):int {
 			var direction:int = 0;
-			var angle:Number = angleFromOrigin(dot1, dot2);
-			var index:int = Math.floor(angle / PIECE);
+			var radian:Number = angleFromOrigin(dot1, dot2);
+			var index:int = Math.floor(radian / PIECE);
 			return DIRECTION[index];
 		}
 		
